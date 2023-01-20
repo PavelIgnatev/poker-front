@@ -4,6 +4,8 @@ import { LOCALES } from '18n/locales';
 import { messages } from '18n/messages';
 import Pages from 'pages';
 
+import 'assets/style/index.scss';
+
 const App = () => {
   const locale = LOCALES.ENGLISH;
 
