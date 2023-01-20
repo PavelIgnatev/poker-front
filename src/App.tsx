@@ -1,15 +1,18 @@
-import { LOCALES } from '18n/locales';
-import { messages } from '18n/messages';
+import React from 'react';
 import { IntlProvider } from 'react-intl';
 
-import React from 'react';
+import { LOCALES } from '18n/locales';
+import { messages } from '18n/messages';
+import Pages from 'pages';
 
-export const App = () => {
+const App = () => {
   const locale = LOCALES.ENGLISH;
 
   return (
     <IntlProvider messages={messages[locale]} locale={locale} defaultLocale={LOCALES.ENGLISH}>
-      <></>
+      <Pages />
     </IntlProvider>
   );
 };
+
+export default App;
