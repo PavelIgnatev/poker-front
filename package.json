@@ -15,7 +15,8 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "prettier --config .prettierrc --write"
+      "prettier --config .prettierrc --write",
+      "git add ."
     ]
   },
   "eslintConfig": {
