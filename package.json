@@ -10,15 +10,14 @@
   "scripts": {
     "start": "tsc && react-scripts start",
     "build": "tsc && react-scripts build",
-    "format": "prettier --config .prettierrc --write 'src/**/*.{ts,tsx}'",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "precommit": "lint-staged"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run format"
-    }
+  "lint-staged": {
+    "src/**/*.{ts,tsx}": [
+      "prettier --config .prettierrc --write"
+    ]
   },
-
   "eslintConfig": {
     "extends": [
       "react-app"
@@ -38,7 +37,9 @@
   },
   "devDependencies": {
     "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
     "husky": "^8.0.3",
+    "lint-staged": "^13.1.0",
     "prettier": "^2.8.3",
     "typescript": "^4.9.4"
   }
