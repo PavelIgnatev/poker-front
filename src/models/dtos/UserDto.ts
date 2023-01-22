@@ -1,0 +1,13 @@
+import { AccessToken } from '../AccessToken';
+
+export default class UserDto {
+  email;
+  id;
+  isActivated;
+
+  constructor(model: AccessToken) {
+    this.email = model.email;
+    this.id = model.id;
+    this.isActivated = model.isActivated;
+  }
+}
