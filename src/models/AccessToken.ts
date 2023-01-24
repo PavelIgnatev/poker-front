@@ -3,5 +3,5 @@ export interface AccessToken {
   email: string;
   exp: number;
   iat: number;
-  isActivated: boolean;
+  emailConfirmed: boolean;
 }

@@ -6,42 +6,30 @@ import { Rule } from 'rc-field-form/lib/interface';
 
 import classes from './index.module.scss';
 
-interface LoginFormProps {
-  onFinish: (values: { email: string; password: string }) => void;
+interface RecoveryFormProps {
+  onFinish: (values: { email: string }) => void;
 }
 
-const LoginForm = (props: LoginFormProps) => {
+const RecoveryForm = (props: RecoveryFormProps) => {
   const { onFinish } = props;
 
   const intl = useIntl();
 
-  const labelEmail = useMemo(() => intl.formatMessage({ id: 'login-form.email.label' }), [intl]);
-  const labelPassword = useMemo(
-    () => intl.formatMessage({ id: 'login-form.password.label' }),
-    [intl],
-  );
+  const labelEmail = useMemo(() => intl.formatMessage({ id: 'recovery-form.email.label' }), [intl]);
   const messageEmailInvalid = useMemo(
-    () => intl.formatMessage({ id: 'login-form.email.invalid' }),
-    [intl],
-  );
-  const messagePasswordInvalid = useMemo(
-    () => intl.formatMessage({ id: 'login-form.password.invalid' }),
+    () => intl.formatMessage({ id: 'recovery-form.email.invalid' }),
     [intl],
   );
   const messageEmailRequired = useMemo(
-    () => intl.formatMessage({ id: 'login-form.email.required' }),
-    [intl],
-  );
-  const messagePasswordRequired = useMemo(
-    () => intl.formatMessage({ id: 'login-form.password.required' }),
+    () => intl.formatMessage({ id: 'recovery-form.email.required' }),
     [intl],
   );
   const finishFailedMessage = useMemo(
-    () => intl.formatMessage({ id: 'login-form.finish.failed.message' }),
+    () => intl.formatMessage({ id: 'recovery-form.finish.failed.message' }),
     [intl],
   );
   const finishFailedDescription = useMemo(
-    () => intl.formatMessage({ id: 'login-form.finish.failed.description' }),
+    () => intl.formatMessage({ id: 'recovery-form.finish.failed.description' }),
     [intl],
   );
   const emailRules = useMemo(
@@ -57,16 +45,6 @@ const LoginForm = (props: LoginFormProps) => {
         },
       ] as Rule[],
     [messageEmailInvalid, messageEmailRequired],
-  );
-  const passwordRules = useMemo(
-    () => [
-      { min: 6, max: 32, message: messagePasswordInvalid },
-      {
-        required: true,
-        message: messagePasswordRequired,
-      },
-    ],
-    [messagePasswordRequired, messagePasswordInvalid],
   );
 
   const handleFinishFailed = useCallback(() => {
@@ -86,9 +64,6 @@ const LoginForm = (props: LoginFormProps) => {
       <Form.Item label={labelEmail} name="email" rules={emailRules}>
         <Input />
       </Form.Item>
-      <Form.Item label={labelPassword} name="password" rules={passwordRules}>
-        <Input.Password />
-      </Form.Item>
       <Form.Item
         wrapperCol={{
           offset: 4,
@@ -96,16 +71,11 @@ const LoginForm = (props: LoginFormProps) => {
         }}
       >
         <Button type="primary" htmlType="submit">
-          <FormattedMessage id="login-form.button" />
+          <FormattedMessage id="recovery-form.button" />
         </Button>
         <Button type="ghost" className={classes.button}>
-          <Link to="/signup">
-            <FormattedMessage id="login-form.button.link" />
-          </Link>
-        </Button>
-        <Button type="ghost">
-          <Link to="/recovery">
-            <FormattedMessage id="login-form.button.recovery.link" />
+          <Link to="/login">
+            <FormattedMessage id="recovery-form.button.link" />
           </Link>
         </Button>
       </Form.Item>
@@ -113,4 +83,4 @@ const LoginForm = (props: LoginFormProps) => {
   );
 };
 
-export default LoginForm;
+export default RecoveryForm;

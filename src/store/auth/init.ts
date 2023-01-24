@@ -21,10 +21,16 @@ export const postRegistration = createEffect(
   },
 );
 
+export const postRecovery = createEffect(async ({ email }: { email: string }) => {
+  const {
+    data: { accessToken },
+  } = await AuthService.recovery(email);
+
+  return accessToken;
+});
+
 export const postLogout = createEffect(async () => {
   await AuthService.logout();
 
   return null;
 });
-
-postRegistration({ email: 'palllkaignatev@yandex.ru', password: 'hahaha' });
